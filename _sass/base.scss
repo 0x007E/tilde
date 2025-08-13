@@ -1,0 +1,83 @@
+// Bootstrap-kompatible Farben für beide Modi
+$hl-bg-light:    var(--bs-body-bg, #fff);
+$hl-bg-dark:     var(--bs-body-bg, #212529);
+
+$hl-fg-light:    #222;
+$hl-fg-dark:     #eaeaea;
+
+$hl-token-light: (
+  keyword:   #a71d5d,
+  string:    #183691,
+  comment:   #7c7c7c,
+  function:  #795e26,
+  tag:       #0086b3,
+  attr:      #008080,
+  number:    #005cc5,
+  variable:  #b75501,
+);
+
+$hl-token-dark: (
+  keyword:   #ff4287,
+  string:    #ffe580,
+  comment:   #818181,
+  function:  #b899ff,
+  tag:       #87ceeb,
+  attr:      #b6e382,
+  number:    #e8bbff,
+  variable:  #b75501,
+);
+
+// Helper-Mixin für Tokenfarben
+@mixin highlight-tokens($map) {
+  .k, .kc, .kd, .kn, .kp, .kr, .kt { color: map-get($map, keyword); }
+  .s, .sd, .sb, .sc, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss  { color: map-get($map, string); }
+  .c, .cm, .c1, .cs      { color: map-get($map, comment); }
+  .nf, .ne, .nl          { color: map-get($map, function); }
+  .nt                    { color: map-get($map, tag); }
+  .na                    { color: map-get($map, attr); }
+  .m, .mf, .mh, .mi, .mo, .il { color: map-get($map, number); }
+  .nv, .vc, .vg, .vi     { color: map-get($map, variable); }
+}
+
+// Basis-Look für alle Codeblocks
+.highlight {
+  padding: 1rem;
+  border-radius: .5rem;
+  overflow-x: auto;
+  font-size: .96em;
+}
+
+// ----- Light Mode -----
+[data-bs-theme="light"] .highlight,
+:root:not([data-bs-theme]) .highlight {
+  background: $hl-bg-light;
+  color: $hl-fg-light;
+  @include highlight-tokens($hl-token-light);
+  * { color: $hl-fg-light; }
+}
+
+// ----- Dark Mode -----
+[data-bs-theme="dark"] .highlight {
+  background: $hl-bg-dark;
+  color: $hl-fg-dark;
+  @include highlight-tokens($hl-token-dark);
+  * { color: $hl-fg-dark; }
+}
+
+// Optional: Zeilennummer (so wie im HTML-Beispiel oben)
+.highlight .lineno {
+  color: #bbb;
+  user-select: none;
+  margin-right: 1em;
+  display: inline-block;
+  width: 2em;
+  text-align: right;
+}
+
+// Beispiel für Extras: Spezielle Sprache/Dateityp
+.language-liquid .highlight {
+  .p  { color: #87ceeb !important; }
+  .kr { color: #87ceeb !important; }
+  .nf { color: #b899ff !important; }
+  .nt { color: #87ceeb !important; }
+}

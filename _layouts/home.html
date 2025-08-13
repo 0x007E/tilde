@@ -1,0 +1,89 @@
+---
+layout: main
+---
+
+{%- if page.title -%}
+  <h1 class="page-heading">{{ page.title }}</h1>
+{%- endif -%}
+
+{{ content }}
+
+{% assign max_visible = site.tilde.visible_posts | default: 25 %}
+
+{% if site.categories.size > 0 %}
+  {% if site.tilde.category_show_goto %}
+  <div class="container text-end">
+    <div class="row justify-content-md-center">
+      <div class="col-md-12">
+        {% for category in site.categories %}
+          {% assign cat_id = category[0] | slugify %}
+          <a href="#{{ cat_id }}" class="btn btn-outline-secondary btn-sm">{{ category[0] }}</a>&nbsp;
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <hr />
+  {% endif %}
+  {% for category in site.categories %}
+    {% assign cat_id = category[0] | slugify %}
+    <div class="container">
+      <div class="row justify-content-md-center mb-2">
+        <div class="col-md-12">
+          <h3 id="{{ cat_id }}">{{ category[0] }}</h3>
+          <hr />
+          {%- if category[1].size > 0 -%}
+          <ul class="list-group">
+            {% for post in category[1] limit:max_visible %}
+              {% include post.html post=post %}
+            {% endfor %}
+          
+            {% if category[1].size > max_visible %}
+              <div class="collapse" id="collapse-{{ cat_id }}">
+                <ul class="list-group mt-2">
+                  {% for post in category[1] offset:max_visible %}
+                    {% include post.html post=post %}
+                  {% endfor %}
+                </ul>
+              </div>
+              <a class="btn btn-sm btn-link"
+                data-bs-toggle="collapse"
+                href="#collapse-{{ cat_id }}"
+                role="button"
+                aria-expanded="false"
+                aria-controls="collapse-{{ cat_id }}">
+                Show more ({{ category[1].size | minus:max_visible }})
+              </a>
+            {% endif %}
+          </ul>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+{%- else -%}
+    {% assign collapse_id = "posts-collapse" %}
+    <ul class="list-group mb-2">
+      {% for post in site.posts limit:max_visible %}
+        {% include post.html post=post %}
+      {% endfor %}
+    </ul>
+
+    {% if site.posts.size > max_visible %}
+      <div class="collapse" id="{{ collapse_id }}">
+        <ul class="list-group mt-2">
+          {% for post in site.posts offset:max_visible %}
+            {% include post.html post=post %}
+          {% endfor %}
+        </ul>
+      </div>
+      
+      <a class="btn btn-sm btn-link"
+        data-bs-toggle="collapse"
+        href="#{{ collapse_id }}"
+        role="button"
+        aria-expanded="false"
+        aria-controls="{{ collapse_id }}">
+        Show more ({{ site.posts.size | minus:max_visible }})
+      </a>
+    {% endif %}
+{%- endif -%}

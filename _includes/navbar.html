@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-md bg-body-tertiary">
+  <div class="container">
+    <a class="navbar-brand" href="{{ site.url }}">
+      {% avatar {{ site.github.user }} %} {{ site.title }}
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+        <li class="nav-item">
+            <a class="nav-link {% if page.url == '/' %}active{% endif %}" aria-current="{% if page.url == '' %}page{% endif %}" href="{{ site.url }}">Home</a>
+        </li>
+        {%- assign default_paths = site.pages | map: "path" -%}
+        {%- assign page_paths = site.tilde.nav_pages | default: default_paths -%}
+        {% include navbar-items.html paths = page_paths %}
+      </ul>
+      <hr class="d-md-none my-2 border-secondary" />
+      <form class="d-flex" role="theme">
+        <button id="light" class="btn btn-sm btn-default theme-btn">
+          <span class="d-inline d-md-none me-1">Light</span><i class="ti ti-sun"></i>
+        </button>
+        <button id="dark" class="btn btn-sm btn-default theme-btn">
+          <span class="d-inline d-md-none me-1">Dark</span><i class="ti ti-moon"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+</nav>

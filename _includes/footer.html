@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-10">
+            <hr />
+        </div>
+    </div>
+</div>
+<div class="container text-start mt-3">
+    <div class="row justify-content-md-center">
+        <div class="col-md-{{ site.footer.github_column | default: 3 }}">
+            <a href="https://github.com/{{ site.github.user }}" target="_blank" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover d-flex align-items-center text-decoration-none">
+                <i class="ti ti-brand-github"></i>&nbsp;{{ site.github.user }}
+            </a>
+            {%- if site.github.email -%}
+            <a href="mailto:{{ site.github.email }}" target="_blank" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover d-flex align-items-center text-decoration-none">
+                <i class="ti ti-mail"></i>&nbsp;{{ site.github.email }}
+            </a>
+            {%- endif -%}
+        </div>
+        <div class="col-md-{{ site.footer.description_column | default: 7 }}">
+            {{ site.description }}
+        </div>
+    </div>
+</div>
+<div class="container text-center">
+    <div class="row justify-content-md-center">
+        <div class="col-md-10">
+            <br />
+            {%- for entry in site.social -%}
+            <a href="{{ entry.link }}" class="link-{{ entry.color | default: 'warning' }} text-decoration-none" target="_blank" title="{{ entry.title }}">
+                <i class="ti ti-brand-{{ entry.icon }} fs-4"></i>
+            </a>
+            {%- endfor -%}
+            {% unless site.feed.hide %}
+            <a href="{{ site.feed.path | default: 'feed.xml' | absolute_url }}" class="link-{{ site.feed.color | default: 'warning' }} text-decoration-none" target="_blank" title="Subscribe to feed">
+                <i class="ti ti-rss fs-4"></i>
+            </a>
+            {%- endunless %}
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-10">
+            <hr />
+        </div>
+    </div>
+</div>
+<div class="container text-center">
+    <div class="row justify-content-md-center">
+        <div class="col-md-5 text-start">
+            <i class="ti ti-copyright"></i>&nbsp;<span id="powerd-date"></span>&nbsp;{{ site.copyright | default: site.github.user }}
+        </div>
+        <div class="col-md-5 text-start text-md-end">
+            <i class="ti ti-power"></i>&nbsp;Powerd by&nbsp;
+            <a href="https://jekyllrb.com" class="link-secondary" role="button" target="_blank" rel="noopener noreferrer">
+                Jekyll
+            </a>
+            &nbsp;and&nbsp;
+            <a href="https://github.com/0x007e/tilde" class="link-secondary" role="button" target="_blank" rel="noopener noreferrer">
+                Tilde
+            </a>
+        </div>
+    </div>
+    {%- if site.license -%}
+    <div class="row justify-content-md-center text-start text-md-center">
+        <div class="col-md-10 mb-4">
+            <a href="{{ site.license }}" class="link-secondary" role="button" target="_blank" rel="noopener noreferrer">
+                <i class="ti ti-license"></i>&nbsp;LICENSE
+            </a>
+        </div>
+    </div>
+    {%- endif -%}
+</div>

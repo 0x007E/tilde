@@ -1,0 +1,89 @@
+---
+layout: main
+---
+
+<article class="h-entry container text-start" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <div class="row justify-content-md-center">
+    <header class="col-md-12">
+      <h1 id="top" class="p-name" itemprop="headline">{{ page.title | escape }}</h1>
+      <hr />
+    </header>
+  </div>
+
+  {%- assign date_format = site.tilde.date_format | default: "%b %-d, %Y" -%}
+  {%- assign pdate = page.date | date_to_xmlschema -%}
+
+  <div class="row d-flex align-items-center justify-content-md-center">
+    <div class="col-md-6 align-items-center">
+      <i class="ti ti-clock-share"></i>&nbsp;
+      <time class="dt-published" datetime="{{ pdate }}" itemprop="datePublished">
+        {{ pdate | date: date_format }}
+      </time>
+      {%- if page.modified_date %}
+        <span>&nbsp;/&nbsp;</span>
+        {%- assign mdate = page.modified_date | date_to_xmlschema %}
+        <i class="ti ti-repeat"></i>&nbsp;
+        <time class="dt-modified" datetime="{{ mdate }}" itemprop="dateModified">
+          {{ mdate | date: date_format }}
+        </time>
+      {%- endif %}
+    </div>
+    <div class="col-md-6 align-items-center text-start text-md-end">
+      <i class="ti ti-hourglass-empty"></i>&nbsp;{%- include reading-time.html -%}
+    </div>
+  </div>
+  <div class="row justify-content-md-center">
+    <div class="col-md-12">
+      <hr />
+    </div>
+  </div>
+
+  <div class="row justify-content-md-center">
+    <div class="col-md-12 e-content" itemprop="articleBody">
+      {{ content }}
+    </div>
+  </div>
+
+  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>
+
+{% if page.tags %}
+  <div class="row justify-content-md-center">
+    <div class="col-md-12">
+        {% for tag in page.tags %}
+          <button type="button" class="btn btn-warning btn-sm me-1" disabled>
+            {{ tag }}
+          </button>
+        {% endfor %}
+    </div>
+  </div>
+{% endif %}
+
+<div class="row justify-content-md-center">
+  <div class="col-md-12">
+    <hr />
+  </div>
+</div>
+
+<div class="row justify-content-md-center">
+  <div class="col-md-5 mt-2 mt-md-0">
+    {% if page.previous.url %}
+      <a href="{{ page.previous.url }}" class="btn btn-outline-secondary btn-sm">
+        <i class="ti ti-chevrons-left"></i>&nbsp;{{ page.previous.title | truncate: site.tilde.truncate_next_blog_link }}
+      </a>
+    {% endif %}
+  </div>
+  <div class="col-md-2 mt-2 mt-md-0 text-start text-md-center">
+    <a href="#top" class="btn btn-outline-secondary btn-sm">
+        Top
+    </a>
+  </div>
+  <div class="col-md-5 text-start text-md-end mt-2 mt-md-0">
+    {% if page.next.url %}
+      <a href="{{ page.next.url }}" class="btn btn-outline-secondary btn-sm">
+        {{ page.next.title | truncate: site.tilde.truncate_next_blog_link }}&nbsp;<i class="ti ti-chevrons-right"></i>
+      </a>
+    {% endif %}
+  </div>
+</div>

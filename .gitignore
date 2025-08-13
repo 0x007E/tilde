@@ -1,0 +1,12 @@
+_site
+_posts
+_drafts
+_data
+
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
+Gemfile.lock
+_config.yml
+*.md

@@ -1,0 +1,20 @@
+{%- assign date_format = site.tilde.date_format | default: "%b %-d, %Y" -%}
+<li class="list-group-item d-flex justify-content-between align-items-start">
+  <div>
+    <a href="{{ post.url | relative_url }}" class="link-primary">
+      <div class="fw-bold">
+        {{ post.title }}
+      </div>
+    </a>
+    {%- if site.tilde.show_introduction -%}
+      {%- if post.introduction -%}
+        <div class="text-start text-muted">
+          {{ post.introduction }}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+  <span class="badge text-bg-primary rounded-pill">
+    {{ post.date | date: date_format }}
+  </span>
+</li>

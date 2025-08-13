@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  
+  {%- include head.html -%}
+  
+  <body>
+    {%- include header.html -%}
+    <div class="container text-start mt-3">
+      <div class="row justify-content-md-center">
+        <div class="col-md-10">
+          {{ content }}
+        </div>
+      </div>
+    </div>
+    {%- include footer.html -%}
+    {%- include script.html -%}
+  </body>
+</html>
