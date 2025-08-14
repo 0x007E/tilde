@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-md-0">
         <li class="nav-item">
-            <a class="nav-link {% if page.url == '/' %}active{% endif %}" aria-current="{% if page.url == '' %}page{% endif %}" href="{{ site.url }}">Home</a>
+            <a class="nav-link {% if page.url == '/' %}active{% endif %}" href="{{ site.baseurl }}/">Home</a>
         </li>
         {%- assign default_paths = site.pages | map: "path" -%}
         {%- assign page_paths = site.tilde.nav_pages | default: default_paths -%}
