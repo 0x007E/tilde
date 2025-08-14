@@ -11,6 +11,11 @@
         <li class="nav-item">
             <a class="nav-link {% if page.url == '/' %}active{% endif %}" href="{{ site.baseurl }}/">Home</a>
         </li>
+        {%- assign default_paths = site.pages
+            | map: "path"
+            | reject: site.baseurl | append: "/index.md" | remove_first: "/"
+            | reject: "index.md"
+        -%}
         {%- assign default_paths = site.pages | map: "path" -%}
         {%- assign page_paths = site.tilde.nav_pages | default: default_paths -%}
         {% include navbar-items.html paths = page_paths %}
