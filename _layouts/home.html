@@ -12,12 +12,12 @@ layout: main
 
 {% if site.categories.size > 0 %}
   {% if site.tilde.category_show_goto %}
-  <div class="container text-end">
+  <div class="container text-start text-md-end">
     <div class="row justify-content-md-center">
       <div class="col-md-12">
         {% for category in site.categories %}
           {% assign cat_id = category[0] | slugify %}
-          <a href="#{{ cat_id }}" class="btn btn-outline-secondary btn-sm">{{ category[0] }}</a>&nbsp;
+          <a href="#{{ cat_id }}" class="btn btn-outline-secondary btn-sm my-1 my-md-0">{{ category[0] }}</a>&nbsp;
         {% endfor %}
       </div>
     </div>
