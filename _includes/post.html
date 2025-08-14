@@ -1,5 +1,5 @@
 {%- assign date_format = site.tilde.date_format | default: "%b %-d, %Y" -%}
-<li class="list-group-item d-flex justify-content-between align-items-start">
+<li class="list-group-item d-flex flex-column flex-md-row justify-content-between align-items-start">
   <div>
     <a href="{{ post.url | relative_url }}" class="link-primary">
       <div class="fw-bold">
@@ -14,7 +14,7 @@
       {%- endif -%}
     {%- endif -%}
   </div>
-  <span class="badge text-bg-primary rounded-pill">
+  <span class="badge text-bg-primary rounded-pill mt-2 mt-md-0">
     {{ post.date | date: date_format }}
   </span>
 </li>
