@@ -1,7 +1,14 @@
 <nav class="navbar navbar-expand-md bg-body-tertiary">
   <div class="container">
     <a class="navbar-brand" href="{{ site.baseurl }}/">
-      {% avatar {{ site.github.user }} %} {{ site.title }}
+      {%- if site.brand.image -%}
+        <img src="{{ site.brand.image }}" alt="{{ site.title }}" class="rounded-circle me-3" width="{{ site.brand.width | default: 30 }}" height="{{ site.brand.height | default: 30 }}">
+      {%- else if site.brand.gravatar -%}
+        <img src="https://gravatar.com/avatar/{{ site.brand.gravatar }}" alt="{{ site.title }}" class="rounded-circle me-3" width="{{ site.brand.width | default: 30 }}" height="{{ site.brand.height | default: 30 }}">
+      {%- else -%}
+        {% avatar {{ site.github.user }} %}
+      {%- endif -%}
+      {{ site.title }}
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
