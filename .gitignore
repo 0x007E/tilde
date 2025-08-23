@@ -11,3 +11,5 @@ Gemfile.lock
 _config.yml
 *.md
 !LICENSE.md
+
+assets/images/
