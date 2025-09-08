@@ -5,6 +5,13 @@ $hl-bg-dark:     var(--bs-body-bg, #212529);
 $hl-fg-light:    #222;
 $hl-fg-dark:     #eaeaea;
 
+$blockquote-bg-light: #f8f9fa;
+$blockquote-bg-dark:  #2a2a2a;
+$blockquote-border-light: #dee2e6;
+$blockquote-border-dark: #444;
+$blockquote-color-light: #6c757d;
+$blockquote-color-dark: #adb5bd;
+
 $hl-token-light: (
   keyword:   #a71d5d,
   string:    #183691,
@@ -59,12 +66,32 @@ $hl-token-dark: (
   * { color: $hl-fg-light; }
 }
 
+[data-bs-theme="light"] blockquote {
+  background-color: $blockquote-bg-light;
+  border-left: 4px solid $blockquote-border-light;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+  color: $blockquote-color-light;
+  font-style: italic;
+  border-radius: 0.3rem;
+}
+
 // ----- Dark Mode -----
 [data-bs-theme="dark"] .highlight {
   background: $hl-bg-dark;
   color: $hl-fg-dark;
   @include highlight-tokens($hl-token-dark);
   * { color: $hl-fg-dark; }
+}
+
+[data-bs-theme="dark"] blockquote {
+  background-color: $blockquote-bg-dark;
+  border-left: 4px solid $blockquote-border-dark;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+  color: $blockquote-color-dark;
+  font-style: italic;
+  border-radius: 0.3rem;
 }
 
 // Optional: Zeilennummer (so wie im HTML-Beispiel oben)
