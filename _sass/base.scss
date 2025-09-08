@@ -1,4 +1,4 @@
-// Bootstrap-kompatible Farben für beide Modi
+
 $hl-bg-light:    var(--bs-body-bg, #fff);
 $hl-bg-dark:     var(--bs-body-bg, #212529);
 
@@ -36,7 +36,6 @@ $hl-token-dark: (
   preproc:   #20aaff,
 );
 
-// Helper-Mixin für Tokenfarben
 @mixin highlight-tokens($map) {
   .k, .kc, .kd, .kn, .kp, .kr, .kt { color: map-get($map, keyword); }
   .s, .sd, .sb, .sc, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss  { color: map-get($map, string); }
@@ -49,7 +48,6 @@ $hl-token-dark: (
   .cp { color: map-get($map, preproc); }
 }
 
-// Basis-Look für alle Codeblocks
 .highlight {
   padding: 1rem;
   border-radius: .5rem;
@@ -94,7 +92,6 @@ $hl-token-dark: (
   border-radius: 0.3rem;
 }
 
-// Optional: Zeilennummer (so wie im HTML-Beispiel oben)
 .highlight .lineno {
   color: #bbb;
   user-select: none;
@@ -104,7 +101,6 @@ $hl-token-dark: (
   text-align: right;
 }
 
-// Beispiel für Extras: Spezielle Sprache/Dateityp
 .language-liquid .highlight {
   .p  { color: #87ceeb !important; }
   .kr { color: #87ceeb !important; }
