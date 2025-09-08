@@ -14,6 +14,7 @@ $hl-token-light: (
   attr:      #008080,
   number:    #005cc5,
   variable:  #b75501,
+  preproc:   #183691,
 );
 
 $hl-token-dark: (
@@ -25,6 +26,7 @@ $hl-token-dark: (
   attr:      #b6e382,
   number:    #e8bbff,
   variable:  #b75501,
+  preproc:   #20aaff,
 );
 
 // Helper-Mixin für Tokenfarben
@@ -37,6 +39,7 @@ $hl-token-dark: (
   .na                    { color: map-get($map, attr); }
   .m, .mf, .mh, .mi, .mo, .il { color: map-get($map, number); }
   .nv, .vc, .vg, .vi     { color: map-get($map, variable); }
+  .cp { color: map-get($map, preproc); }
 }
 
 // Basis-Look für alle Codeblocks
