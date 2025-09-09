@@ -48,6 +48,18 @@ $hl-token-dark: (
   .cp { color: map-get($map, preproc); }
 }
 
+@mixin highlight-tokens($map) {
+  .k, .kc, .kd, .kn, .kp, .kr, .kt { color: map-get($map, keyword); }
+  .s, .sd, .sb, .sc, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss  { color: map-get($map, string); }
+  .c, .cm, .c1, .cs      { color: map-get($map, comment); }
+  .nf, .ne, .nl, .nb, .bp, .n  { color: map-get($map, function); }
+  .nt                    { color: map-get($map, tag); }
+  .na                    { color: map-get($map, attr); }
+  .m, .mf, .mh, .mi, .mo, .il { color: map-get($map, number); }
+  .nv, .vc, .vg, .vi     { color: map-get($map, variable); }
+  .cp { color: map-get($map, preproc); }
+}
+
 .highlight {
   padding: 1rem;
   border-radius: .5rem;
